@@ -18,7 +18,7 @@ Create polished, editable diagrams.net/draw.io figures. This skill merges three 
 5. Validate with `scripts/validate_drawio.py <file.drawio> --strict-overlap`; fix errors, garbled text, overlaps, bad references, and clipping.
 6. Export PNG when the user asks, when publication output is expected, or when diagrams.net desktop is available:
    `powershell -ExecutionPolicy Bypass -File scripts/export_drawio_png.ps1 <file.drawio>`.
-7. If the user asks to edit the browser canvas, discover draw.io/diagrams.net MCP or Browser tools first. If no MCP exists, generate a web bridge with `scripts/make_drawio_web_bridge.py <file.drawio> <bridge.html>` and open it in a browser.
+7. If the user asks to edit the browser canvas, discover draw.io/diagrams.net MCP tools first, especially `next-ai-draw-io`. If no MCP exists, generate a web bridge with `scripts/make_drawio_web_bridge.py <file.drawio> <bridge.html>` and open it in a browser.
 
 ## Design Profiles
 
@@ -28,7 +28,9 @@ Create polished, editable diagrams.net/draw.io figures. This skill merges three 
 
 ## Web draw.io Bridge
 
-Use this when the user wants to connect to the web version of draw.io / diagrams.net:
+First choice for direct control is a draw.io MCP server such as `next-ai-draw-io`. Use `tool_search` for `next-ai-draw-io draw.io diagrams.net mcp` before falling back to the bridge. When that MCP is available, prefer MCP operations for direct canvas/file actions such as opening a diagram, creating/updating shapes, importing XML, exporting XML/PNG, screenshotting, and saving.
+
+Use the bridge when no direct MCP tool is available and the user still wants to connect to the web version of draw.io / diagrams.net:
 
 ```bash
 python C:\Users\Administrator\.codex\skills\drawio\scripts\make_drawio_web_bridge.py input.drawio output.html
