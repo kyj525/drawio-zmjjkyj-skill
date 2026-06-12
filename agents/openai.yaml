@@ -1,0 +1,8 @@
+interface:
+  display_name: "Draw.io Diagram"
+  short_description: "Create, polish, export draw.io diagrams"
+  brand_color: "#3F6FB5"
+  default_prompt: "Use $drawio to create a polished editable draw.io diagram and export a PNG if useful."
+
+policy:
+  allow_implicit_invocation: true
