@@ -136,6 +136,10 @@ def build(spec: dict[str, Any]) -> ET.ElementTree:
             attrs["source"] = str(edge["source"])
         if edge.get("target"):
             attrs["target"] = str(edge["target"])
+        if "value_raw" in edge:
+            attrs["value"] = str(edge["value_raw"])
+        elif edge.get("text") is not None:
+            attrs["value"] = label(edge.get("text", ""))
         mx = ET.SubElement(root, "mxCell", attrs)
         geom = add_geometry(mx, {"relative": "1"})
         points = edge.get("points") or []
