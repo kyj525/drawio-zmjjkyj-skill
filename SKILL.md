@@ -24,7 +24,7 @@ Create polished, editable diagrams.net/draw.io figures. This skill merges three 
 
 - **Academic / thesis / paper figure**: read `references/academic-quality.md` and `references/figure-types.md`. Use light backgrounds, low-saturation colors, strong typography, orthogonal connectors, and spacious grid alignment. Default to `.drawio + PNG` when possible.
 - **Flowchart / workflow / process map**: read `references/flowchart-swimlane.md`. Use swimlane containers for stages, centered node text, orthogonal connectors, blue 3px main arrows, stage palette, and left-margin routed loop arrows.
-- **Custom XML / browser/MCP integration**: read `references/drawio-xml-patterns.md` for minimal XML skeletons, style recipes, waypoint edges, and troubleshooting.
+- **Custom XML / browser/MCP integration**: read `references/drawio-xml-patterns.md` for minimal XML skeletons, style recipes, waypoint edges, and troubleshooting. Read `references/next-ai-draw-io-mcp.md` when the user wants direct browser control or mentions `next-ai-draw-io`.
 
 ## Web draw.io Bridge
 

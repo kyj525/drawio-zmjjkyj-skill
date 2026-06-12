@@ -4,5 +4,11 @@ interface:
   brand_color: "#3F6FB5"
   default_prompt: "Use $drawio to create a polished editable draw.io diagram and export a PNG if useful."
 
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "drawio"
+      description: "Next AI Draw.io MCP server for real-time browser preview and direct diagrams.net editing via @next-ai-drawio/mcp-server."
+
 policy:
   allow_implicit_invocation: true
