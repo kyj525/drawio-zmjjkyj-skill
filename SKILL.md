@@ -18,13 +18,29 @@ Create polished, editable diagrams.net/draw.io figures. This skill merges three 
 5. Validate with `scripts/validate_drawio.py <file.drawio> --strict-overlap`; fix errors, garbled text, overlaps, bad references, and clipping.
 6. Export PNG when the user asks, when publication output is expected, or when diagrams.net desktop is available:
    `powershell -ExecutionPolicy Bypass -File scripts/export_drawio_png.ps1 <file.drawio>`.
-7. If the user asks to edit the browser canvas, discover draw.io/diagrams.net MCP or Browser tools first. Import/open the generated `.drawio` if direct canvas operations are unreliable.
+7. If the user asks to edit the browser canvas, discover draw.io/diagrams.net MCP or Browser tools first. If no MCP exists, generate a web bridge with `scripts/make_drawio_web_bridge.py <file.drawio> <bridge.html>` and open it in a browser.
 
 ## Design Profiles
 
 - **Academic / thesis / paper figure**: read `references/academic-quality.md` and `references/figure-types.md`. Use light backgrounds, low-saturation colors, strong typography, orthogonal connectors, and spacious grid alignment. Default to `.drawio + PNG` when possible.
 - **Flowchart / workflow / process map**: read `references/flowchart-swimlane.md`. Use swimlane containers for stages, centered node text, orthogonal connectors, blue 3px main arrows, stage palette, and left-margin routed loop arrows.
 - **Custom XML / browser/MCP integration**: read `references/drawio-xml-patterns.md` for minimal XML skeletons, style recipes, waypoint edges, and troubleshooting.
+
+## Web draw.io Bridge
+
+Use this when the user wants to connect to the web version of draw.io / diagrams.net:
+
+```bash
+python C:\Users\Administrator\.codex\skills\drawio\scripts\make_drawio_web_bridge.py input.drawio output.html
+```
+
+Open `output.html` in a browser. It embeds `https://embed.diagrams.net` with `embed=1&proto=json`, loads the `.drawio` XML via `postMessage`, listens for Save/Autosave events, and provides download buttons for the edited `.drawio` and exported PNG.
+
+Important limits:
+
+- A normal webpage cannot silently overwrite local files. The bridge can download the updated `.drawio`; Codex must read the downloaded file or the user must import it back.
+- If a draw.io MCP server exists, prefer MCP for direct canvas/file updates.
+- If Browser automation is available, use it to open the bridge and visually verify the canvas.
 
 ## Spec Generator
 
